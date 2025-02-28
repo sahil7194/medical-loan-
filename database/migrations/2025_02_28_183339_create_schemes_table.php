@@ -12,8 +12,22 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('schemes', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('slug')->unique();
+            $table->string('title');
+            $table->longText('description');
+            $table->string('image')->nullable();
+            $table->text("redirection_link");
+            $table->string('min_interest_rate');
+            $table->string('max_interest_rate');
+            $table->string('min_cibil');
+            $table->string('max_cibil');
+            $table->unsignedInteger('bank_id')->nullable();
+            $table->foreign('bank_id')->references('id')->on('banks');
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

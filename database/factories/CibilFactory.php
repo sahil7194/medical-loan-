@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,15 @@ class CibilFactory extends Factory
      */
     public function definition(): array
     {
+        $user = User::inRandomOrder()->first();
+
         return [
-            //
+            "score"   => fake()->numberBetween(700,950),
+            "vendor"  => fake()->randomElement(["a","b"]),
+            "user_id" => $user->id,
+            "name"    => $user->id % 2 == 0 ? '': fake()->name(),
+            "email"   => $user->id % 2 == 0 ? '': fake()->unique()->safeEmail(),
+            "mobile"  => $user->id % 2 == 0 ? '': fake()->phoneNumber()
         ];
     }
 }

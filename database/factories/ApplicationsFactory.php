@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Scheme;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,17 @@ class ApplicationsFactory extends Factory
      */
     public function definition(): array
     {
+        $user = User::inRandomOrder()->first();
+
+        $referral = User::inRandomOrder()->first();
+
+        $scheme = Scheme::inRandomOrder()->first();
+
         return [
-            //
+            "user_id"     => $user->id,
+            "referral_id" => $referral->id,
+            "scheme_id"   => $scheme->id,
+            "status"      => fake()->numberBetween(0,4),
         ];
     }
 }

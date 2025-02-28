@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('amount');
             $table->string('status');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('mode');
             $table->unsignedInteger('referral_id');
             $table->foreign('referral_id')->references('id')->on('users');
-            $table->unsignedInteger('scheme_id');
-            $table->foreign('scheme_id')->references('id')->on('schemes');
+            $table->unsignedInteger('application_id');
+            $table->foreign('application_id')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('payments');
     }
 };

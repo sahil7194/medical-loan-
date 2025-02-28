@@ -12,8 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('blogs', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->longText('content');
+            $table->string('image')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -12,8 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cibils', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('score');
+            $table->string('vendor');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
