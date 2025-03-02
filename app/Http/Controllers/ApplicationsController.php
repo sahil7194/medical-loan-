@@ -12,9 +12,18 @@ class ApplicationsController extends Controller
      */
     public function index()
     {
-        //
+        return view('application.list');
     }
 
+    public function show_reference_history_page()
+    {
+        return view('application.referencehistory');
+    }
+
+    public function show_vendor_applicant_page()
+    {
+        return view('application.vendor-applicant-list');
+    }
     /**
      * Show the form for creating a new resource.
      */

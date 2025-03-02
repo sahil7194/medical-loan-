@@ -15,6 +15,11 @@ class PaymentController extends Controller
         //
     }
 
+    public function show_vendor_payment_history_page()
+    {
+        return view('payment.vendor-payment-history');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

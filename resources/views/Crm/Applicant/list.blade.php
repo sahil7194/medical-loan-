@@ -1,13 +1,12 @@
-
 @extends('structure.layout')
 @section('title')
-    Welcome
+    Applicants
 @endsection
 
 @section('content')
 
 <div>
     <!-- When there is no desire, all things are at peace. - Laozi -->
-    Welcome
+    Applicants
 </div>
 @endsection

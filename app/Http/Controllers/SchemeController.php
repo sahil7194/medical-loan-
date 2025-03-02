@@ -12,7 +12,12 @@ class SchemeController extends Controller
      */
     public function index()
     {
-        //
+        return view('scheme.list');
+    }
+
+    public function show_refer_scheme_page()
+    {
+        return view('scheme.refer');
     }
 
     /**

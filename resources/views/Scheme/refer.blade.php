@@ -1,13 +1,13 @@
 
 @extends('structure.layout')
 @section('title')
-    Welcome
+    Refer Scheme
 @endsection
 
 @section('content')
 
 <div>
     <!-- When there is no desire, all things are at peace. - Laozi -->
-    Welcome
+    Refer Scheme
 </div>
 @endsection
