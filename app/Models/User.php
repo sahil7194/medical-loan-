@@ -61,4 +61,9 @@ class User extends Authenticatable
     {
         return $this->user_type == 3;
     }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
 }

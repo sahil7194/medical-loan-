@@ -10,6 +10,8 @@
     </title>
     <link rel="icon" href="favicon.ico">
     <link href="{{asset('./assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('./assets/css/app2.css')}}" rel="stylesheet">
+
 </head>
 
 <body class="bg-white dark:bg-black">

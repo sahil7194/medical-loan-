@@ -15,11 +15,13 @@ return new class extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->longText('content');
+            $table->text('content');
             $table->string('image')->nullable();
+            $table->string('status')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

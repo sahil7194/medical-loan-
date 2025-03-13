@@ -4,8 +4,8 @@
         <div class="flex items-center justify-between">
             <div class="block py-4 lg:py-0">
                 <a href="/" class="block max-w-[145px] sm:max-w-[180px]">
-                    <img src="images/logo.svg" alt="logo" class="block dark:hidden" />
-                    <img src="images/logo-white.svg" alt="logo" class="hidden dark:block" />
+                    {{-- <img src="{{asset('./assets/images/logo.png')}}" alt="logo" class="block dark:hidden" />
+                    <img src="{{asset('./assets/images/logo.png')}}" alt="logo" class="hidden dark:block" /> --}}
                 </a>
             </div>
             <button

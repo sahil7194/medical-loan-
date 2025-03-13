@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('blog.list');
+        $blogs = Blog::paginate(5);
+
+        return view('blog.list',compact('blogs'));
     }
 
     /**
@@ -35,7 +39,9 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $blog = Blog::find($id);
+
+        return view('blog.show',compact('blog'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Applications;
 use App\Models\Bank;
+use App\Models\Blog;
 use App\Models\Cibil;
 use App\Models\Payment;
 use App\Models\Scheme;
@@ -34,6 +35,8 @@ class DatabaseSeeder extends Seeder
         Applications::factory(30)->create();
 
         Payment::factory(20)->create();
+
+        Blog::factory(30)->create();
 
     }
 }

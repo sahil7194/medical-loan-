@@ -31,6 +31,8 @@ Route::controller(AuthController::class)->group(function(){
 
 Route::controller(CibilController::class)->group(function(){
     Route::get('cibil-check', 'show_cibil_check_page');
+    Route::view('cibil-result', 'cibil.result');
+
 });
 
 Route::controller(SchemeController::class)->group(function (){
@@ -58,9 +60,12 @@ Route::controller(CrmController::class)->group(function(){
     Route::get('crm-applicant','show_applicant_page');
 })->middleware(['auth','staff']);
 
-Route::resource('blogs', BlogController::class)
-->middleware(['auth','staff'])
-->except(['index','show']);
+Route::middleware(['auth', 'staff'])->group(function () {
+    Route::resource('blogs', BlogController::class)->except(['index', 'show']);
+});
+
+Route::resource('blogs', BlogController::class)->only(['index', 'show']);
+
 
 Route::view('terms-conditions','other.terms-conditions');
 Route::view('privacy-policy','other.privacy-policy');

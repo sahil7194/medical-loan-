@@ -9,17 +9,17 @@
               class="wow fadeInUp mb-11 max-w-[320px]"
               data-wow-delay=".2s"
             >
-              <a href="index.html" class="mb-8 inline-block">
-                <img
-                  src="images/logo.svg"
+              <a href="/" class="mb-8 inline-block">
+                {{-- <img
+                  src="{{asset('./assets/images/logo.png')}}"
                   alt="logo"
-                  class="block max-w-full dark:hidden"
+                  class="block  dark:hidden"
                 />
                 <img
-                  src="images/logo-white.svg"
+                  src="{{asset('./assets/images/logo.png')}}"
                   alt="logo"
-                  class="hidden max-w-full dark:block"
-                />
+                  class="hidden dark:block"
+                /> --}}
               </a>
               <p class="text-base text-body">
                 This membership will help you plan and execute a variety of
@@ -357,11 +357,11 @@
             <div
               class="flex items-center justify-center space-x-4 sm:space-x-8 md:justify-end lg:justify-end"
             >
-              <a href="javascript:void(0)" class="text-base text-white">
-                Privacy Policy
-              </a>
-              <a href="javascript:void(0)" class="text-base text-white">
+              <a href="/terms-conditions" class="text-base text-white">
                 Terms and conditions
+              </a>
+              <a href="/privacy-policy" class="text-base text-white">
+                Privacy Policy
               </a>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,11 +17,17 @@ class BlogFactory extends Factory
      */
     public function definition(): array
     {
+        $user = User::inRandomOrder()->first();
+
+        $imageUrl = 'https://picsum.photos/id/'.$user->id.'/370/240';
+
         return [
             'title'   => fake()->sentence(7),
-            'content' => fake()->paragraphs(6),
+            'content' => implode("\n\n", fake()->paragraphs(13)),
             'slug'    => fake()->unique()->slug(4),
-            'image'   => fake()->imageUrl()
+            'image'   => $imageUrl,
+            'status'  => fake()->numberBetween(0,2),
+            'user_id' => $user->id
         ];
     }
 }
