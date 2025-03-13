@@ -31,11 +31,19 @@ Route::controller(AuthController::class)->group(function(){
 
 Route::controller(CibilController::class)->group(function(){
     Route::get('cibil-check', 'show_cibil_check_page');
+    Route::post('cibil-check', 'cibil_check');
+
     Route::view('cibil-result', 'cibil.result');
 
 });
 
 Route::controller(SchemeController::class)->group(function (){
+
+    Route::get('schemes-applicant','applicant_schemes')->middleware(['auth']);
+    Route::get('schemes-applicant/{slug}','applicant_schemes_show')->middleware(['auth']);
+    Route::get('schemes-applicant/{slug}/apply','applicant_schemes_apply')->middleware(['auth']);
+
+
 
     Route::get('refer-scheme', 'show_refer_scheme_page')->middleware(['auth','referent']);
     Route::get('schemes','index')->middleware(['auth','referent']);

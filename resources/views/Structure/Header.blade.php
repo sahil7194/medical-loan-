@@ -43,7 +43,7 @@
                             {{-- Auth User Menu --}}
 
                             <li class="menu-item">
-                                <a href="/schemes"
+                                <a href="/schemes-applicant"
                                     class="menu-scroll inline-flex items-center text-base font-medium text-black hover:text-primary dark:text-white dark:hover:text-primary lg:py-7">
                                     Schemes
                                 </a>

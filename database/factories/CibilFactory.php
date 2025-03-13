@@ -25,7 +25,8 @@ class CibilFactory extends Factory
             "user_id" => $user->id,
             "name"    => $user->id % 2 == 0 ? '': fake()->name(),
             "email"   => $user->id % 2 == 0 ? '': fake()->unique()->safeEmail(),
-            "mobile"  => $user->id % 2 == 0 ? '': fake()->phoneNumber()
+            "mobile"  => $user->id % 2 == 0 ? '': fake()->phoneNumber(),
+            "pan_card" => fake()->unique()->word()
         ];
     }
 }

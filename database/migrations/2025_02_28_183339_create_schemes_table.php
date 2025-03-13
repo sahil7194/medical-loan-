@@ -22,6 +22,11 @@ return new class extends Migration
             $table->string('max_interest_rate');
             $table->string('min_cibil');
             $table->string('max_cibil');
+            $table->string('min_tenure');
+            $table->string('max_tenure');
+            $table->string('min_amount');
+            $table->string('max_amount');
+            $table->string('status');
             $table->unsignedInteger('bank_id')->nullable();
             $table->foreign('bank_id')->references('id')->on('banks');
             $table->unsignedInteger('user_id')->nullable();

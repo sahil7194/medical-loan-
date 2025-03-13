@@ -67,4 +67,24 @@ class SchemeController extends Controller
     {
         //
     }
+
+    public function applicant_schemes()
+    {
+        $schemes = Scheme::where( 'status',  '1')->paginate(10);
+
+        return view('scheme.applicant', compact('schemes'));
+    }
+
+    public function applicant_schemes_show(string $slug)
+    {
+        $scheme = Scheme::where('slug', '=', $slug)->get()->first();
+
+        return view('scheme.applicantshow', compact('scheme'));
+    }
+
+    public function applicant_schemes_apply(string $slug)
+    {
+
+        dd($slug);
+    }
 }

@@ -15,11 +15,12 @@ return new class extends Migration
             $table->increments('id');
             $table->string('score');
             $table->string('vendor');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
+            $table->string('pan_card');
             $table->timestamps();
             $table->softDeletes();
         });

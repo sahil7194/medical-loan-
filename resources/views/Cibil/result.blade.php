@@ -17,18 +17,18 @@
             <div class="flex justify-center items-center space-x-4">
                 <!-- Credit Score Value -->
                 <div class="flex items-center justify-center h-20 w-20 rounded-full bg-gray-200 text-xl font-bold text-black dark:bg-gray-700 dark:text-white">
-                    {{ 500 }} <!-- This is where the actual credit score number will go -->
+                    {{ $score }} <!-- This is where the actual credit score number will go -->
                 </div>
             </div>
 
             <!-- Score Range Indication -->
             <div class="mt-6">
                 <div class="text-center text-lg font-medium text-black dark:text-white">
-                    @if (500 >= 750)
+                    @if ($score >= 750)
                         <span class="text-green-500">Excellent</span>
-                    @elseif (500 >= 650)
+                    @elseif ($score >= 650)
                         <span class="text-yellow-500">Good</span>
-                    @elseif (500 >= 550)
+                    @elseif ($score >= 550)
                         <span class="text-orange-500">Fair</span>
                     @else
                         <span class="text-red-500">Poor</span>

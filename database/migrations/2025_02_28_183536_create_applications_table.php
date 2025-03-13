@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('status');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedInteger('referral_id');
+            $table->unsignedInteger('referral_id')->nullable();
             $table->foreign('referral_id')->references('id')->on('users');
             $table->unsignedInteger('scheme_id');
             $table->foreign('scheme_id')->references('id')->on('schemes');
