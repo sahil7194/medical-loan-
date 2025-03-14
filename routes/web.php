@@ -37,7 +37,7 @@ Route::controller(CibilController::class)->group(function(){
 
 });
 
-Route::controller(SchemeController::class)->group(function (){
+Route::controller(SchemeController::class) ->group(function (){
 
     Route::get('schemes-applicant','applicant_schemes')->middleware(['auth']);
     Route::get('schemes-applicant/{slug}','applicant_schemes_show')->middleware(['auth']);
@@ -50,7 +50,7 @@ Route::controller(SchemeController::class)->group(function (){
 });
 
 Route::controller(ApplicationsController::class)->group(function(){
-    Route::get('application-history','index')->middleware(['auth','referent']);
+    Route::get('application-history','index')->middleware(['auth']);
     Route::get('reference-history','show_reference_history_page')->middleware(['auth','referent']);
     Route::get('referent-applicant','show_vendor_applicant_page')->middleware(['auth','referent']);
 });

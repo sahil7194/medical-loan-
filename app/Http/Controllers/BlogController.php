@@ -41,6 +41,10 @@ class BlogController extends Controller
     {
         $blog = Blog::find($id);
 
+        if(!$blog){
+           return back();
+        }
+
         return view('blog.show',compact('blog'));
     }
 

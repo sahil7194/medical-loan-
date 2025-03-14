@@ -6,6 +6,16 @@
 
 @section('content')
 
+@if (session('link'))
+    {{-- <div class="alert alert-success">
+
+    </div> --}}
+    <script type="text/javascript">
+        // Open a new tab
+        window.open( {{ session('link') }}, "_blank");
+    </script>
+@endif
+
 <div class="container mx-auto p-6 lg:max-w-4xl">
     <!-- Scheme Image -->
     <div class="wow fadeInUp mb-10" data-wow-delay=".2s">

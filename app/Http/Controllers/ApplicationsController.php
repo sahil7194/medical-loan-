@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applications;
+use App\Models\Scheme;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ApplicationsController extends Controller
@@ -12,7 +14,9 @@ class ApplicationsController extends Controller
      */
     public function index()
     {
-        return view('application.list');
+        $schemes = User::find(auth()->user()->id)->applications()->paginate(10);
+
+        return view('application.list', compact('schemes'));
     }
 
     public function show_reference_history_page()

@@ -19,7 +19,7 @@
     @include('structure.header')
 
     <main>
-        <section class="pt-[150px] pb-[60px] lg:pt-[220px]">
+        <section class="pt-[150px] pb-[60px] lg:pt-[150px]">
             <div class="container overflow-hidden lg:max-w-[1250px]">
                 @yield('content')
             </div>
