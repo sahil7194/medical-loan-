@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Scheme\StoreSchemeRequest;
 use App\Models\Scheme;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class SchemeController extends Controller
@@ -29,15 +31,33 @@ class SchemeController extends Controller
      */
     public function create()
     {
-        //
+        return view('scheme.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreSchemeRequest $request)
     {
-        //
+        $user = User::find(Auth::user()->id);
+
+        $params = $request->all();
+
+        $params['slug'] = fake()->unique()->slug;
+
+        if ($request->hasFile('file-upload')) {
+            $path = $request->file('file-upload')->store();
+        }
+
+        $params['image'] = $path;
+
+        $params['status'] = '1';
+
+        $user->schemes()->create($params);
+
+        $schemes = Scheme::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('scheme.vendor_list', compact('schemes'));
     }
 
     /**
@@ -53,7 +73,7 @@ class SchemeController extends Controller
      */
     public function edit(Scheme $scheme)
     {
-        //
+        return view('scheme.edit', compact('scheme'));
     }
 
     /**
@@ -61,7 +81,25 @@ class SchemeController extends Controller
      */
     public function update(Request $request, Scheme $scheme)
     {
-        //
+        $params = $request->all();
+
+        $params['slug'] = fake()->unique()->slug;
+
+        $path = $scheme->image;
+
+        if ($request->hasFile('file-upload')) {
+            $path = $request->file('file-upload')->store();
+        }
+
+        $params['image'] = $path;
+
+        $params['status'] = '1';
+
+        $scheme->update($params);
+
+        $schemes = Scheme::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('scheme.vendor_list', compact('schemes'));
     }
 
     /**
@@ -69,7 +107,18 @@ class SchemeController extends Controller
      */
     public function destroy(Scheme $scheme)
     {
-        //
+        $scheme->delete();
+
+        $schemes = Scheme::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
+
+        return back();
+    }
+
+    public function vendor_schemes_list()
+    {
+        $schemes = Scheme::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('scheme.vendor_list', compact('schemes'));
     }
 
     public function applicant_schemes(Request $request)
@@ -128,7 +177,7 @@ class SchemeController extends Controller
             "referral_id" => $vId
         ]);
 
-        $link = $scheme->redirection_link."?vendor=nearme";
+        $link = $scheme->redirection_link . "?vendor=nearme";
 
         return back()->with('link', $link);
     }

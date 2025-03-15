@@ -60,9 +60,9 @@
 
                             {{-- Vendor --}}
                             <li class="menu-item">
-                                <a href="/referent-applicant"
+                                <a href="/vendor-schemes"
                                     class="menu-scroll inline-flex items-center text-base font-medium text-black hover:text-primary dark:text-white dark:hover:text-primary lg:py-7">
-                                    Applicant List
+                                    Schemes
                                 </a>
                             </li>
                         @endif

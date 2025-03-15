@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Scheme extends Model
 {
@@ -25,5 +26,10 @@ class Scheme extends Model
 
     public function creator(){
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function memo()
+    {
+        return Str::words($this->description,8);
     }
 }

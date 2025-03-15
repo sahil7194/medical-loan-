@@ -43,11 +43,13 @@ Route::controller(SchemeController::class) ->group(function (){
     Route::get('schemes-applicant/{slug}','applicant_schemes_show')->middleware(['scheme']);
     Route::get('schemes-applicant/{slug}/apply','applicant_schemes_apply')->middleware(['auth']);
 
-
+    Route::get('vendor-schemes/','vendor_schemes_list')->middleware(['auth']);
 
     Route::get('refer-scheme', 'show_refer_scheme_page')->middleware(['auth','referent']);
     Route::get('schemes','index')->middleware(['auth','referent']);
 });
+
+Route::resource('schemes', SchemeController::class);
 
 Route::controller(ApplicationsController::class)->group(function(){
     Route::get('application-history','index')->middleware(['auth']);
