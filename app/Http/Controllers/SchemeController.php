@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Scheme;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class SchemeController extends Controller
 {
@@ -17,7 +19,9 @@ class SchemeController extends Controller
 
     public function show_refer_scheme_page()
     {
-        return view('scheme.refer');
+        $schemes = Scheme::where('status',  '1')->paginate(10);
+
+        return view('scheme.refer', compact('schemes'));
     }
 
     /**
@@ -113,12 +117,19 @@ class SchemeController extends Controller
     {
         $scheme = Scheme::where('slug', '=', $slug)->get()->first();
 
+        $vSlug = Cache::get('vid');
+
+        $vId = User::where('slug', $vSlug)->first();
+
+        $vId = $vId['id'] ?? null;
+
         $scheme->users()->attach(auth()->user()->id, [
             "status" => '2',
-            "referral_id" => 6 //need to taken form cache if exits
+            "referral_id" => $vId
         ]);
 
+        $link = $scheme->redirection_link."?vendor=nearme";
 
-        return back()->with('link', 'www.youtube.com');
+        return back()->with('link', $link);
     }
 }

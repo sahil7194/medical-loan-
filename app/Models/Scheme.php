@@ -22,4 +22,8 @@ class Scheme extends Model
     {
         return $this->belongsToMany(User::class, 'scheme_user', 'scheme_id', 'id')->withPivot(['status'])->withTimestamps();
     }
+
+    public function creator(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

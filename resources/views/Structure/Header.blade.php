@@ -60,7 +60,7 @@
 
                             {{-- Vendor --}}
                             <li class="menu-item">
-                                <a href="/vendor-applicant"
+                                <a href="/referent-applicant"
                                     class="menu-scroll inline-flex items-center text-base font-medium text-black hover:text-primary dark:text-white dark:hover:text-primary lg:py-7">
                                     Applicant List
                                 </a>
@@ -83,12 +83,12 @@
                                 </a>
                             </li>
 
-                            <li class="menu-item">
+                            {{-- <li class="menu-item">
                                 <a href="/vendor-payment-history"
                                     class="menu-scroll inline-flex items-center text-base font-medium text-black hover:text-primary dark:text-white dark:hover:text-primary lg:py-7">
                                     Payment History
                                 </a>
-                            </li>
+                            </li> --}}
                         @endif
                         {{-- Referrent --}}
 

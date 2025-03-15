@@ -76,6 +76,12 @@ class User extends Authenticatable
 
     public function referrals()
     {
-        return $this->belongsToMany(Scheme::class, 'scheme_user', 'referral_id', 'id')->withPivot(['status'])->withTimestamps();
+        return $this->belongsToMany(Scheme::class, 'scheme_user', 'referral_id', )->withPivot(['status'])->withTimestamps();
     }
+
+    public function schemes()
+    {
+        return $this->hasMany(Scheme::class);
+    }
+
 }

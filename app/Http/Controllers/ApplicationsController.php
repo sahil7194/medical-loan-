@@ -14,14 +14,23 @@ class ApplicationsController extends Controller
      */
     public function index()
     {
-        $schemes = User::find(auth()->user()->id)->applications()->paginate(10);
+        $schemes = User::find(auth()->user()->id)->applications()->orderByDesc('created_at')->paginate(10);
 
         return view('application.list', compact('schemes'));
     }
 
     public function show_reference_history_page()
     {
-        return view('application.referencehistory');
+        // $user = User::find(auth()->user()->id);÷
+
+        $user = Scheme::whereHas('referrals', function($query){
+                $query->where('referral_id' , 7);
+        })->paginate(10);;
+
+        // $user = $user->referrals;
+        // dd($user);
+
+        return view('application.referencehistory', compact('user'));
     }
 
     public function show_vendor_applicant_page()

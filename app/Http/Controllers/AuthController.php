@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\SignupRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class AuthController extends Controller
 {
@@ -33,11 +34,17 @@ class AuthController extends Controller
 
     public function signin(SigninRequest $request)
     {
+        $path =  Cache::get('path');
+
         $params = $request->validated();
 
         Auth::attempt($params);
 
-         return redirect('home')->with([
+        if($path){
+            return redirect($path);
+        }
+
+        return redirect('home')->with([
             "message" => "Signup Successfully Done"
         ]);
     }

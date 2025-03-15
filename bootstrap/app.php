@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\ReferentMiddleware;
+use App\Http\Middleware\SchemeMiddleware;
 use App\Http\Middleware\StaffMiddleware;
 use App\Http\Middleware\VendorMiddleware;
 use Illuminate\Foundation\Application;
@@ -21,7 +22,8 @@ return Application::configure(basePath: dirname(__DIR__))
             [
                 'referent' => ReferentMiddleware::class,
                 'vendor'   => VendorMiddleware::class,
-                'staff'    =>  StaffMiddleware::class,
+                'staff'    => StaffMiddleware::class,
+                'scheme'   => SchemeMiddleware::class,
             ]
         );
     })
